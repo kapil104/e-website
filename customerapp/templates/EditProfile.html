@@ -1,0 +1,194 @@
+{% extends 'Index.html' %}
+{% load static %}
+
+
+{% block Header %} 
+<header >
+    
+
+    <!-- Header desktop -->
+    <div class="container-menu-desktop" >
+        <!-- Topbar -->
+        
+            <nav class="limiter-menu-desktop container" style="box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1);">
+
+                <!-- Logo desktop -->
+                <a href="#" class="logo">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+                </a>
+
+                <!-- Menu desktop -->
+                <div class="menu-desktop" >
+                    <ul class="main-menu" >
+                        <li >
+                            <a 
+                            
+                            href="{{C_URL}}customerapp/">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a 
+                            
+                            href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a 
+                            
+                            href="{{C_URL}}customerapp/addtocart">Add To Cart</a>
+                        </li>
+                        <li class="active-menu">
+                            <a 
+                            
+                            href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/viewprofile">View Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/logout/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+        </div>
+    </div>
+
+    <!-- Header Mobile -->
+    <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <div class="logo-mobile">
+            
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li class="active-menu">
+                            <a href="{{C_URL}}">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}login/">Logout</a>
+                        </li>
+                    </ul>
+                </div>    
+        </div>
+
+        
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
+
+    
+</header>
+{% endblock Header %} 
+
+
+{% block Slider %}
+<br>
+<div align="center">
+    <br>
+    <h3>{{msg}}</h3>
+<form method="post" 
+action="{{C_URL}}customerapp/editprofile/">
+    {% csrf_token %}
+    <input type="hidden" 
+    value="{{customer.customer_id}}" name="customer_id" />
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *"
+        value="{{customer.name}}"
+        >
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *"
+        disabled
+        value="{{customer.email}}"
+        >
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="mobile" placeholder="Mobile *"
+        value="{{customer.mobile}}"
+        >
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="country"
+            value={{customer.country}}
+            >
+            {% for item in dropdown_country %}
+            <option value="{{ item }}" {% if item == selected_country %}selected{% endif %}>
+              {{ item }}
+            </option>
+          {% endfor %}
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="state">
+                {% for item in dropdown_state %}
+                <option value="{{ item }}" {% if item == selected_state %}selected{% endif %}>
+                  {{ item }}
+                </option>
+              {% endfor %}
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="city">
+                {% for item in dropdown_city %}
+                <option value="{{ item }}" {% if item == selected_city %}selected{% endif %}>
+                  {{ item }}
+                </option>
+              {% endfor %}
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <textarea class="stext-111 cl2 plh3 p-lr-18 p-tb-25" name="address" placeholder="Address.."
+        rows="4"
+        >{{customer.address}}</textarea>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" 
+        name="pincode" placeholder="Pincode *"
+        value={{customer.pincode}}
+        >
+    </div>
+
+
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+        Update 
+    </button>
+    <br>
+    
+</form>
+</div>
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %} 
+
+{% endblock Products %} 
+
+{% block Footer %} 
+{% endblock Footer %} 

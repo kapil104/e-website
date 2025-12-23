@@ -1,0 +1,158 @@
+{% extends 'Index.html' %}
+{% load static %}
+
+
+{% block Header %} 
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop"
+        >
+            
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"/>
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li >
+                                <a href="{{C_URL}}adminapp/">AdminHome</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproduct/">AddProduct</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproductimage/">AddProductImage</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/deleteimage/">deleteimage</a>
+                            </li>
+                            <li >
+                                <a href="{{C_URL}}adminapp/managecustomer/">ManageCustomer</a>
+                            </li>
+                            <li class="active-menu">
+                                <a href="{{C_URL}}adminapp/viewproduct/">ViewProduct</a>
+                            </li>
+                            <li >
+                                <a href="{{C_URL}}adminapp/vieworders/">vieworders</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}logout/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    
+                </nav>
+                
+            </div>
+            
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile"
+        style="background-color:red"
+        >
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                    data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+                    data-notify="0">
+                    <i class="zmdi zmdi-favorite-outline"></i>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </header>
+{% endblock Header%}
+
+{% block Slider %}
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %} 
+
+{% if prod_details %}
+<div class="container" style="margin-top:80px;">
+    <div class="row">
+        <div class="col-lg-10 col-xl-12 m-lr-auto m-b-50">
+            <table class="table-shopping-cart">
+                <tr class="table_head">
+                    <th class="column-1">S.No</th>
+                    <th class="column-1">Image</th>
+                    <th class="column-1">Product</th>
+                    <th class="column-1">Price</th>
+                    <th class="column-1">Quantity</th>
+                </tr>
+                    {% for dic in prod_details %}
+                    <tr class="table_row">
+                        <td class="column-1">{{forloop.counter}}</td>
+                        <td class="column-1">
+                            {% for imgdic in prod_images %}
+                            {% if dic.product_id == imgdic.product_id %}
+                           <div class="how-itemcart1">
+                            <img src="{{media_url}}{{imgdic.product_img}}" alt="IMG-PRODUCT">
+                            
+                        </div>
+                        
+                        {% endif %}
+                        {% endfor %}
+                                
+                        </td>
+                        <td class="column-1">{{dic.product_brand}}<br>
+                                {{dic.product_description}}</td>
+                        <td class="column-1">
+                            &#8377;{{dic.product_sp}}
+                        </td>
+                        <td class="column-1">
+                            {{dic.product_quantity}}
+                        </td>
+                       
+                        <td class="column-1">
+                            <button class="flex-c-m stext-101 cl0 size-125 bg10 bor2 p-lr-15 trans-04">
+                                <a href="{{C_URL}}adminapp/deleteproduct?id={{dic.product_id}}" style="color:beige;text-decoration:none;background-color:lightcoral;
+                                height:25px;width: 100px;text-align: center;">
+                                    DELETE
+                                </a>
+                                </button>  
+                               
+                        </tr>
+                        {% endfor %}
+                </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div style="margin-top:80px;text-align:center;" class="container">
+
+    <h1 style="margin-top:60px;text-align:center;">No Product Found</h1>
+    
+    {% endif %}
+
+{% endblock Products %}
+
+
+{% block Footer %} 
+{% endblock Footer %} 

@@ -1,0 +1,212 @@
+{% extends 'Index.html' %}
+
+{% load static %}
+
+{% block Header %} 
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop"
+        >
+            
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"/>
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li >
+                                <a href="{{C_URL}}adminapp/">AdminHome</a>
+                            </li>
+                            <li class="active-menu">
+                                <a href="{{C_URL}}adminapp/addproduct/">AddProduct</a>
+                            </li>
+
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproductimage/">AddProductImage</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/managecustomer/">ManageCustomer</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/viewproduct/">ViewProduct</a>
+                            </li>
+                            <li >
+                                <a href="{{C_URL}}adminapp/vieworders/">vieworders</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}logout/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    
+                </nav>
+                
+            </div>
+            
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile"
+        style="background-color:red"
+        >
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                    data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+                    data-notify="0">
+                    <i class="zmdi zmdi-favorite-outline"></i>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </header>
+{% endblock Header%}
+
+
+{% block Slider %}
+<!-- <h1>Add Product</h1>  -->
+<br>
+<div class="p-t-60" align="center" style="background:lightgray;">
+    <h3>
+        ADD PRODUCT
+    </h3><br>
+    <h3>{{msg}}</h3>
+<form method="post" action="{{C_URL}}adminapp/addproduct/">
+{% csrf_token %}
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="product_brand" placeholder="Enter a Product Brand*">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="product_variant_name" placeholder="Enter a Product Variant Name *">
+    </div>
+
+   
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" id="product_mrp" name="product_mrp" placeholder="Enter a Product Maximum Retails Price *" oninput="mrp()">
+        
+    </div>
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" step="any" id="product_discount" placeholder="Enter a Product Discount*" oninput="mrp()">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" step="any" id="product_sp"  oninput="mrp()" readonly>
+    </div>
+        
+        </select>  
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="product_size" placeholder="Enter a Product Size* ">
+    </div>
+    
+
+    {% comment %} <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="country">
+                <option>Select a Country</option>
+                <option>India</option>
+                <option>UK</option>
+                <option>US</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div> {% endcomment %}
+
+    {% comment %} <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="state">
+                <option>Select a State</option>
+                <option>M.P</option>
+                <option>U.P</option>
+                <option>Rajasthan</option>
+                <option>Gujarat</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div> {% endcomment %}
+
+    {% comment %} <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="city">
+                <option>Select a City</option>
+                <option>Indore</option>
+                <option>Ujjain</option>
+                <option>Bhopal</option>
+                <option>Ratlam</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div> {% endcomment %}
+
+    <div class="bor19 size-218 m-b-20">
+        <textarea class="stext-111 cl2 plh3 p-lr-22 p-tb-25" name="product_description" placeholder="Enter a Product Description*"
+        rows="4"
+        ></textarea>
+    </div>
+
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="number" name="product_quantity" placeholder="Enter a Product Quantity *">
+    </div>
+
+    
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="product_color" placeholder="Enter a Product Color* ">
+    </div>
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="product_availability" placeholder="Enter a Product Availability* ">
+    </div>
+    
+
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+        Add Product
+    </button>
+    <br>
+    
+</form>
+</div>
+
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %} 
+{% endblock Products %} 
+
+{% block Footer %} 
+{% endblock Footer %} 
+<script>
+    function mrp() {
+    let product_mrp = parseFloat(document.getElementById('product_mrp').value) || 0;
+    let product_discount = parseFloat(document.getElementById('product_discount').value) || 0;
+    let product_sp = product_mrp - (product_mrp * product_discount / 100);
+    document.getElementById('product_sp').value = product_sp.toFixed(2);
+    document.getElementById('product_sp').value = "₹ " + product_sp;
+
+        }
+    
+</script>

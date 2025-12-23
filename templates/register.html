@@ -1,0 +1,98 @@
+{% extends 'Index.html' %}  
+
+<!-- {% load static %} -->
+
+{% block Cart %} 
+{% endblock Cart %}
+
+{% block top-bar %}
+{% endblock %}
+
+{% block Slider %} 
+<br>
+<div class="p-t-60" align="center" style="background:lightgray;margin-top:-25px;">
+    <h3>
+        CUSTOMER REGISTER
+    </h3><br>
+    <h3> {{msg}}</h3>
+<form method="post" action="{{C_URL}}register/">
+    {% csrf_token %}
+    
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="password" name="password" placeholder="Password *">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="mobile" placeholder="Mobile *">
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="country">
+                <option>Select a Country</option>
+                <option>India</option>
+                <option>UK</option>
+                <option>US</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="state">
+                <option>Select a State</option>
+                <option>M.P</option>
+                <option>U.P</option>
+                <option>Rajasthan</option>
+                <option>Gujarat</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <div class="rs1-select2 bor8 bg0">
+            <select class="js-select2" name="city">
+                <option>Select a City</option>
+                <option>Indore</option>
+                <option>Ujjain</option>
+                <option>Bhopal</option>
+                <option>Ratlam</option>
+            </select>
+            <div class="dropDownSelect2"></div>
+        </div>
+    </div>
+    <div class="bor19 size-218 m-b-20">
+        <textarea class="stext-111 cl2 plh3 p-lr-18 p-tb-25" name="address" placeholder="Address.."
+        rows="4"
+        ></textarea>
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="pincode" placeholder="Pincode *">
+    </div>
+
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+        Register
+    </button>
+    <br>
+    
+</form>
+</div>
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %} 
+{% endblock Products %} 
+

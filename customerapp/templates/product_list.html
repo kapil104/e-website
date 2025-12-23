@@ -1,0 +1,7 @@
+{% for product in products %}
+  <div>
+    <img src="{{ media_url }}{{ product.image }}" width="150" />
+    <p>Price: ₹299</p>
+    <a href="{% url 'add_product_to_cart' product.id %}">🛒 Add to Cart</a>
+  </div>
+{% endfor %}

@@ -1,0 +1,254 @@
+{% extends 'Index.html' %}
+{% load static %}
+
+
+{% block Header %} 
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop"
+        >
+            
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"/>
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li >
+                                <a href="{{C_URL}}adminapp/">AdminHome</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproduct/">AddProduct</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproductimage/">AddProductImage</a>
+                            </li>
+                            <li >
+                                <a href="{{C_URL}}adminapp/managecustomer/">ManageCustomer</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/viewproduct/">ViewProduct</a>
+                            </li>
+                            <li class="active-menu">
+                                <a href="{{C_URL}}adminapp/vieworders/">vieworders</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/logout/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    
+                </nav>
+                
+            </div>
+            
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile"
+        style="background-color:red"
+        >
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                    data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+                    data-notify="0">
+                    <i class="zmdi zmdi-favorite-outline"></i>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </header>
+{% endblock Header%}
+
+{% block Slider %}
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %} 
+
+{% if orderdetails %}
+<div class="container" style="margin-top:80px;text-align:center;">
+   
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 p-lr-15 trans-04">
+            <a href="{{C_URL}}adminapp/managecustomer/" style="color:white;text-decoration:none;">
+                Back
+            </a>
+    </button>
+
+    <h1><span style="color:brown;text-decoration:underline;">{{customerdetails.name}}'s</span> Order Details</h1>
+
+    <div class="row">
+        <div class="col-lg-10 col-xl-12 m-lr-auto m-b-50">
+            <table class="table-shopping-cart">
+                <tr class="table_head">
+                    <th class="column-1">S.No</th>
+                    <th class="column-1">Image</th>
+                    <th class="column-1">Product</th>
+                    <th class="column-1">Price</th>
+                    <th class="column-1">Quantity</th>
+                    <th class="column-1">Total</th>
+                </tr>
+                    {% for dic in orderdetails %}
+                    <tr class="table_row">
+                        <td class="column-1">{{forloop.counter}}</td>
+                        <td class="column-1">
+                                <div class="how-itemcart1">
+                                    <img src="{{media_url}}{{dic.product_image}}" alt="IMG">
+                                </div>
+                        </td>
+                        <td class="column-1">{{dic.product_brand}}<br>
+                                {{dic.product_description}}</td>
+                        <td class="column-1">&#8377;{{dic.product_price}}</td>
+                        <td class="column-1">
+                                {{dic.product_quantity}}
+                        </td>
+                        <td class="column-1">&#8377;
+                                {{dic.product_total_price}}
+                        </td>
+                        </tr>
+                        {% endfor %}
+                </table>    
+                {% comment %} <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                    <div class="flex-c-m stext-101 size-119 bg8  p-lr-15 m-tb-10">
+                        Total Price: &#8377;{{sum}}
+                    </div>
+                    
+                    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+                        <a href="{{C_URL}}customerapp/payment?price={{sum}}" style="color:white;">
+                            PlaceOrder
+                        </a>
+                        </button>
+                
+                </div>  {% endcomment %}
+            
+        </div>
+
+        {% comment %} <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+            <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                <h4 class="mtext-109 cl2 p-b-30">
+                    Cart Totals
+                </h4>
+
+                <div class="flex-w flex-t bor12 p-b-13">
+                    <div class="size-208">
+                        <span class="stext-110 cl2">
+                            Subtotal:
+                        </span>
+                    </div>
+
+                    <div class="size-209">
+                        <span class="mtext-110 cl2">
+                            $79.65
+                        </span>
+                    </div>
+                </div>
+
+                <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                    <div class="size-208 w-full-ssm">
+                        <span class="stext-110 cl2">
+                            Shipping:
+                        </span>
+                    </div>
+
+                    <div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+                        <p class="stext-111 cl6 p-t-2">
+                            There are no shipping methods available. Please double check your address, or contact us if you need any help.
+                        </p>
+                        
+                        <div class="p-t-15">
+                            <span class="stext-112 cl8">
+                                Calculate Shipping
+                            </span>
+
+                            <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+                                <select class="js-select2" name="time">
+                                    <option>Select a country...</option>
+                                    <option>USA</option>
+                                    <option>UK</option>
+                                </select>
+                                <div class="dropDownSelect2"></div>
+                            </div>
+
+                            <div class="bor8 bg0 m-b-12">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
+                            </div>
+
+                            <div class="bor8 bg0 m-b-22">
+                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
+                            </div>
+                            
+                            <div class="flex-w">
+                                <div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
+                                    Update Totals
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-w flex-t p-t-27 p-b-33">
+                    <div class="size-208">
+                        <span class="mtext-101 cl2">
+                            Total:
+                        </span>
+                    </div>
+
+                    <div class="size-209 p-t-1">
+                        <span class="mtext-110 cl2">
+                            $79.65
+                        </span>
+                    </div>
+                </div>
+
+                <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div> {% endcomment %}
+    </div>
+</div>
+{% else %}
+<div style="margin-top:80px;text-align:center;" class="container">
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 p-lr-15 trans-04">
+        <a href="{{C_URL}}adminapp/managecustomer/" style="color:white;text-decoration:none;">
+            Back
+        </a>
+</button>
+
+    <h1><span style="color:brown;text-decoration:underline;">{{customerdetails.name}}'s</span> Order Details</h1>
+
+    <h1 style="margin-top:60px;text-align:center;">No Orders Found</h1>
+    
+    {% endif %}
+
+{% endblock Products %}
+
+
+{% block Footer %} 
+{% endblock Footer %} 

@@ -1,0 +1,132 @@
+{% extends 'Index.html' %}
+{% load static %}
+
+
+{% block Header %} 
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop"
+        >
+            
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+
+                    <!-- Logo desktop -->
+                    <a href="#" class="logo">
+                        <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"/>
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li class="active-menu">
+                                <a href="{{C_URL}}adminapp/">AdminHome</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproduct/">AddProduct</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/addproductimage/">AddProductImage</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/deleteimage/">deleteimage</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/changeproductdetail/">changeproductdetail</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}adminapp/managecustomer/">ManageCustomer</a>
+                            </li>
+
+                            <li>
+                                <a href="{{C_URL}}adminapp/viewproduct/">ViewProduct</a>
+                            </li>
+                            <li >
+                                <a href="{{C_URL}}adminapp/vieworders/">vieworders</a>
+                            </li>
+                            <li>
+                                <a href="{{C_URL}}logout/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    
+                </nav>
+                
+            </div>
+            
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile"
+        style="background-color:red"
+        >
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                    data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
+                    data-notify="0">
+                    <i class="zmdi zmdi-favorite-outline"></i>
+                </a>
+            </div>
+
+            
+        </div>
+
+    </header>
+{% endblock Header%}
+
+
+{% block Slider %} 
+{% endblock Slider %}
+
+
+{% block Banner %} 
+
+<div class="admin">
+    <h3>
+        Name:{{profile.name}}
+    </h3>
+    <h3>
+        Email:{{profile.email}}
+    </h3>
+    <h3>Mobile:{{profile.mobile}}
+        </h3>
+    <h3>Gender:{{profile.gender}}
+        </h3>    
+    <h3>Address:{{profile.address}}</h3>    
+</div>
+
+<style>
+    .admin{
+        margin-top:60px;
+        margin-bottom:60px;
+        background-color:lightgray;       
+        width:600px;
+        height:400px;
+        display: grid;
+        justify-content: center; 
+        align-items: center;
+
+    }
+</style>
+{% endblock Banner %} 
+
+{% block Products %} 
+{% endblock Products %} 
+
+ 

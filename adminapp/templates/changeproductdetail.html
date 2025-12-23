@@ -1,0 +1,55 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <title>Change Product Details</title>
+</head>
+<body>
+<div>
+<form method="post" 
+action="{{C_URL}}adminapp/changeproductdetail/">
+{% csrf_token %}
+    <input type="hidden" 
+    value="{{product.product_id}}" name="product_id" />
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *"
+        value="{{product.brand}}"
+        >
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="price" placeholder="price *"
+        disabled
+        value="{{product.price}}"
+        >
+    </div>
+
+    <div class="bor19 size-218 m-b-20">
+        <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="stock" placeholder="stock *"
+        value="{{product.availability}}"
+        >
+    </div>
+
+    
+
+    
+    
+    <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+        Update 
+    </button>
+    <br>
+    
+</form>
+</div>
+    
+
+
+</table>
+
+</body>
+</html>

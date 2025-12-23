@@ -1,0 +1,129 @@
+{% extends 'Index.html' %}
+{% load static %}
+{% block Header %} 
+<header>
+    <!-- Header desktop -->
+    <div class="container-menu-desktop">
+        <!-- Topbar -->
+        
+        <div class="wrap-menu-desktop">
+            <nav class="limiter-menu-desktop container">
+
+                <!-- Logo desktop -->
+                <a href="#" class="logo">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+                </a>
+
+                <!-- Menu desktop -->
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li >
+                            <a href="{{C_URL}}customerapp/">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/addtocart">Add To Cart</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}login/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+        </div>
+    </div>
+
+    <!-- Header Mobile -->
+    <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <div class="logo-mobile">
+            
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li class="active-menu">
+                            <a href="{{C_URL}}">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}login/">Logout</a>
+                        </li>
+                    </ul>
+                </div>    
+        </div>
+
+        
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
+
+    
+</header>
+{% endblock Header %} 
+
+{% block Slider %}
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %}
+<div style="margin-top:90px">
+<button id="rzp-button1" class="btn btn-sm btn-success">Pay ₹{{price}} with Razorpay</button>
+</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "rzp_test_i6FajEt2zWTvJg"
+    , // Enter the Key ID generated from the Dashboard
+    "amount": "{% widthratio price 1 100 %}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Acme Corp",
+    "description": "Test Transaction",
+    "image": "https://img.freepik.com/free-photo/luxurious-car-parked-highway-with-illuminated-headlight-sunset_181624-60607.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1719878400&semt=sph",
+    "order_id": "{{payment.id}}", 
+    //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+    // "callback_url": "http://localhost:8000/customer/razorpay_call_back/",
+    "callback_url":"{{C_URL}}customerapp/paymentstatus/?id={{customer_id}}",
+    "prefill": 
+    {
+        "name": "hrishi",
+        "email": "hrishi01@gmail.com.com.com",
+        "contact": "+919888234212"
+    },
+    "notes": 
+    {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    },
+};
+
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    e.preventDefault();
+    rzp1.open();
+    rzp1.order_id
+    console.log("Order Id:",rzp1.order_id)
+}
+</script>
+{% endblock Products %}
+
+{% block Footer %} 
+{% endblock Footer %} 

@@ -1,0 +1,94 @@
+{% extends 'Index.html' %}
+{% load static %}
+
+{% block Header %} 
+<header>
+    <!-- Header desktop -->
+    <div class="container-menu-desktop">
+        <!-- Topbar -->
+        
+        <div class="wrap-menu-desktop">
+            <nav class="limiter-menu-desktop container">
+
+                <!-- Logo desktop -->
+                <a href="#" class="logo">
+                    <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+                </a>
+
+                <!-- Menu desktop -->
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li >
+                            <a href="{{C_URL}}customerapp/">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/addtocart">Add To Cart</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}login/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+        </div>
+    </div>
+
+    <!-- Header Mobile -->
+    <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <div class="logo-mobile">
+            
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li class="active-menu">
+                            <a href="{{C_URL}}">CustomerHome</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/changepassword">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}customerapp/editprofile">Edit Profile</a>
+                        </li>
+                        <li>
+                            <a href="{{C_URL}}login/">Logout</a>
+                        </li>
+                    </ul>
+                </div>    
+        </div>
+
+        
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
+
+    
+</header>
+{% endblock Header %} 
+
+{% block Slider %}
+{% endblock Slider %} 
+
+{% block Banner %} 
+{% endblock Banner %} 
+
+{% block Products %}
+<h1 style="margin-top:80px;text-align:center;">Payment Successfully Done!!</h1>
+
+<button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 p-lr-15 trans-04" style="margin:auto;">
+    <a href="{{C_URL}}customerapp/" class="cl0" >          
+        Shop More
+    </a>
+</button>{% endblock Products %}
+
+{% block Footer %} 
+{% endblock Footer %} 
